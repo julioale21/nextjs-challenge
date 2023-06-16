@@ -26,10 +26,10 @@ const ProducDetailView: React.FC<ProducDetailProps> = async ({ params }) => {
 
   const productId: string = slug.split('-')[0];
 
-  const productStock: Partial<Product> = await fetchStock(productId);
+  const productPromise = fetchProduct(productId);
+  const stocksPromise = fetchStock(productId);
 
-  const product: Partial<Product> = await fetchProduct(productId);
-
+  const [product, productStock] : [Partial<Product>, Partial<Product>] = await Promise.all([productPromise, stocksPromise]);
 
   return (
     <ProductDetail {...product} {...productStock} />
