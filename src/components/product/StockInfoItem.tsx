@@ -17,13 +17,18 @@ const StockInfoItem: React.FC<StockInfoItemProps> = ({ stock }) => {
         width="100%" 
         justifyContent="space-between" 
         marginY={5} 
-        alignItems="end"
+        alignItems="center"
         flexDirection="row" 
+        borderTop={1}
+        paddingTop={4}
+        borderColor="gray.200"
+        borderStyle={'solid'}
     >
-        <Stack paddingRight={5} justifyContent="space-between" alignItems="end" flexGrow={1} flexDirection="row">
+        <Stack paddingRight={5} justifyContent="space-between" alignItems="center" flexGrow={1} flexDirection="row">
             <Stack>
-            <Text fontSize="xs" fontWeight="extrabold">Code: {stock.code}</Text>
-            <Text fontWeight="light">{stock.name}</Text>
+                <Text color="teal.500" fontWeight="normal">{stock.name}</Text>
+                <Text marginBottom={0} fontSize="xs" fontWeight="light">{stock.stock} units in stock</Text>
+                <Text marginY={0} fontSize="x-small" fontWeight="extrabold">Code: {stock.code}</Text>
             </Stack>
             <Text color='teal.600' fontSize='2xl'>{`$${centsToDollars(stock.price)}`}</Text>
         </Stack>

@@ -7,8 +7,9 @@ import { Product } from "../../../../models/Product";
 
 
 export async function GET(req: Request) {
+  console.log('getting stock price')
 
-  const productId = req.url.slice(req.url.lastIndexOf('/') + 1);
+  let productId = req.url.slice(req.url.lastIndexOf('/') + 1);
 
   const product: Partial<Product> | undefined = products.find((product) => product.id === Number(productId));
 

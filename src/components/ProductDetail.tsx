@@ -1,4 +1,8 @@
 'use client'
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import { Product } from '@/models/Product';
 import { 
   Button, 
@@ -13,14 +17,25 @@ import {
   Stack, 
   Text 
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
 import StockInfoItem from './product/StockInfoItem';
 
 
-const ProductDetail: React.FC<Product> = ({ image, brand, information, stocks, ...rest }) => {
+const ProductDetail: React.FC<Product> = ({ id, image, brand, information, stocks, ...rest }) => {
 
   const [curerntStocks, setCurerntStocks] = useState(stocks);
-  
+
+  useEffect(() => {
+    const fetchStocks = async () => {
+      console.log(process.env.NEXT_PUBLIC_API_URL);
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/stock-price/${id}`);
+      const stocks = await response.data.stocks;
+      setCurerntStocks(stocks);
+    };
+
+    setInterval(fetchStocks, 5000);
+    /* eslint-disable-next-line */
+  }, []);
+
   console.log('stocks', stocks)
   return (
    <Stack flexDirection="row" justifyContent="center" width="100%">
@@ -37,7 +52,7 @@ const ProductDetail: React.FC<Product> = ({ image, brand, information, stocks, .
               <Text textAlign={["justify"]}>
                 {information}
               </Text>
-              {stocks?.length && stocks.map((stock, index) => (
+              {curerntStocks?.length && curerntStocks.map((stock, index) => (
                 <StockInfoItem key={index} stock={stock} />
               ))}
             </CardBody>
