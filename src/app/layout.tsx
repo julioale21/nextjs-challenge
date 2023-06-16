@@ -1,4 +1,7 @@
 // app/layout.tsx
+'use client'
+
+import { NavBar } from "@/components/navbar/NavBar";
 import { Providers } from "./providers";
 
 export default function RootLayout({
@@ -8,8 +11,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning={true} >
         <Providers>
+          <NavBar />
           {children}
         </Providers>
       </body>

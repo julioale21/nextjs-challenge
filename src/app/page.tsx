@@ -1,12 +1,21 @@
-'use client'
 
 import React from 'react';
-import { Stack, Text } from '@chakra-ui/react'
+import { HomeContent } from '../components/Home';
 
-export default function Home() {
+const fetchProducts = async () => {
+  const response = await fetch(`${process.env.BASE_URL}/api/products`, { next: { revalidate: 10 } });
+
+  return await response.json();
+}
+
+
+export default async function Home() {
+  const products = await fetchProducts();
+
+  console.log(products);
+  if (!products) return 'Loading...';
+
   return (
-    <Stack>
-      <Text color="red.500">Nextjs Challenge</Text>
-    </Stack>
+    <HomeContent products={products} />
   )
 }
