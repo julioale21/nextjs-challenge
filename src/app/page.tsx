@@ -3,7 +3,7 @@ import React from 'react';
 import { HomeContent } from '../components/Home';
 
 const fetchProducts = async () => {
-  const response = await fetch(`${process.env.BASE_URL}/api/products`, { next: { revalidate: 10 } });
+  const response = await fetch(`${process.env.BASE_URL || ""}/api/products`, { next: { revalidate: 10 } });
 
   return await response.json();
 }
