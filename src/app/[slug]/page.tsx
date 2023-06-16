@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductDetail from '@/components/ProductDetail';
+import { Product } from '@/models/Product';
 
 interface ProducDetailProps {
   params: {
@@ -13,18 +14,26 @@ const fetchStock = async (productId: string) => {
   return await response.json();
 }
 
-const ProducDetail: React.FC<ProducDetailProps> = async ({ params }) => {
+const fetchProduct = async (productId: string) => {
+  const response = await fetch(`${process.env.BASE_URL}/api/products/${productId}`, { next: { revalidate: 10 } });
+
+  return await response.json();
+}
+
+const ProducDetailView: React.FC<ProducDetailProps> = async ({ params }) => {
 
   const { slug } = params;
 
-  const productId = slug.split('-')[0];
+  const productId: string = slug.split('-')[0];
 
-  const productStock = await fetchStock(productId);
+  const productStock: Partial<Product> = await fetchStock(productId);
 
-  console.log('params',params)
+  const product: Partial<Product> = await fetchProduct(productId);
+
+
   return (
-    <ProductDetail />
+    <ProductDetail {...product} {...productStock} />
   )
 }
 
-export default ProducDetail
+export default ProducDetailView

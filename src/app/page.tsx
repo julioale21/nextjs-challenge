@@ -9,7 +9,7 @@ const fetchProducts = async () => {
 }
 
 
-export default async function Home() {
+export default async function HomeView() {
   const products = await fetchProducts();
 
   console.log(products);

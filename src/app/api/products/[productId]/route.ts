@@ -13,7 +13,7 @@ export async function GET(req: Request) {
 
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(NextResponse.json({ product }));
+      resolve(NextResponse.json(product));
     }, 1000);
   });
 }

@@ -4,14 +4,22 @@ type Sku = {
     name: string,
 }
 
+type Stock = {
+    code: string,
+    stock: number,
+    price: number,
+    name: string,
+}
+
 export type Product = {
-    id: number,
-    brand: string,
-    image: string,
-    style: string,
-    substyle: string,
-    abv: string,
-    origin: string,
-    information: string,
-    skus: Sku[],
+    id?: number | string | undefined,
+    brand?: string,
+    image?: string,
+    style?: string,
+    substyle?: string,
+    abv?: string,
+    origin?: string,
+    information?: string,
+    skus?: Sku[],
+    stocks?: Stock[],
 }

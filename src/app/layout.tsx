@@ -3,6 +3,8 @@
 
 import { NavBar } from "@/components/navbar/NavBar";
 import { Providers } from "./providers";
+import { Footer } from "@/components/footer";
+import { Stack } from "@chakra-ui/react";
 
 export default function RootLayout({
   children,
@@ -14,7 +16,10 @@ export default function RootLayout({
       <body suppressHydrationWarning={true} >
         <Providers>
           <NavBar />
-          {children}
+          <Stack paddingTop={[100, 150]} minH={["calc(100vh - 100px)", "calc(100vh - 150px)"]}>
+            {children}
+          </Stack>
+          <Footer />
         </Providers>
       </body>
     </html>

@@ -10,12 +10,12 @@ export async function GET(req: Request) {
 
   const productId = req.url.slice(req.url.lastIndexOf('/') + 1);
 
-  const product: Product | undefined = products.find((product) => product.id === Number(productId));
+  const product: Partial<Product> | undefined = products.find((product) => product.id === Number(productId));
 
   let response: any = [];
 
   if (product) {
-    response = product?.skus.map((sku) => {
+    response = product?.skus?.map((sku) => {
       const code = Number(sku.code);
 
       const stock = stockPrices[code as keyof typeof stockPrices];
@@ -26,7 +26,7 @@ export async function GET(req: Request) {
 
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(NextResponse.json({ response }));
+      resolve(NextResponse.json({ stocks: response }));
     }, 1000);
   });
 }
