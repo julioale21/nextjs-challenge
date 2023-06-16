@@ -16,7 +16,7 @@ export default function RootLayout({
       <body suppressHydrationWarning={true} >
         <Providers>
           <NavBar />
-          <Stack paddingTop={[100, 150]} minH={["calc(100vh - 100px)", "calc(100vh - 150px)"]}>
+          <Stack paddingTop={[100, 150]} minH={["calc(100vh - 100px)", "100vh"]}>
             {children}
           </Stack>
           <Footer />

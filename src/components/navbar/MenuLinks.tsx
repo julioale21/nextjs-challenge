@@ -21,7 +21,7 @@ const MenuLinks: React.FC<MenuLinksProps> = ({ isOpen }) => {
             pt={[4, 4, 0, 0]}
             >
             <MenuItem to="/">Home</MenuItem>
-            <MenuItem to="/how">How It Works</MenuItem>
+            <MenuItem to="/about">How It Works</MenuItem>
         </Stack>
     </Box>
   )

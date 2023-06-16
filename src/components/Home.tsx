@@ -48,8 +48,8 @@ const HomeContent: React.FC<HomeContentProps> = ({ products }) => {
                 onFilterSelected={() => console.log('//TODO:')} 
             />
         </Stack>
-        <Stack flexGrow={1} paddingX={[8, 8, 20]} paddingTop={50} marginBottom={5}>
-            <Stack marginBottom={10}>
+        <Stack paddingBottom={20} flexGrow={1} paddingX={[8, 8, 20]} paddingTop={50} marginBottom={5}>
+            <Stack marginBottom={['100px','200px']}>
                 <Image 
                     objectFit="fill" 
                     width="100%" 
