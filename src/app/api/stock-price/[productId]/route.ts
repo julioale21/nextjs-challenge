@@ -7,7 +7,6 @@ import { Product } from "../../../../models/Product";
 
 
 export async function GET(req: Request) {
-  console.log('getting stock price')
 
   let productId = req.url.slice(req.url.lastIndexOf('/') + 1);
 

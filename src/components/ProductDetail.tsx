@@ -26,7 +26,6 @@ const ProductDetail: React.FC<Product> = ({ id, image, brand, information, stock
 
   useEffect(() => {
     const fetchStocks = async () => {
-      console.log(process.env.NEXT_PUBLIC_API_URL);
       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/stock-price/${id}`);
       const stocks = await response.data.stocks;
       setCurerntStocks(stocks);
